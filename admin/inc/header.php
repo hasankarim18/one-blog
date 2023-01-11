@@ -19,6 +19,7 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="assets/css/bracket.css">
+    <link rel="stylesheet" href="lib/style.css">
 </head>
 
 <body>
