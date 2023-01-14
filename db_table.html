@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <title>Data base table design</title>
+  </head>
+  <body>
+    <header class="header container">
+      <h1>Databse table basic information</h1>
+    </header>
+    <main class="main container">
+        <!-- category table data -->
+      <section class="section mb-4 category">
+        <h4>Category table requirement</h4>
+        <table>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Si</th>
+                <th scope="col">Data name</th>
+                <th>Data Type</th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>id</td>
+                <td>integer(11)</td>                
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>title</td>
+                <td>varchar (255) </td>                
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="1">sub_title</td>
+                <td colspan="1">varchar(255)</td>                
+              </tr>
+                <tr>
+                <th scope="row">4</th>
+                <td colspan="1">is_parent</td>
+                <td colspan="1">integer(11) 0 or 1 | 0 = not a parent | 1 = is parent </td>                
+              </tr>
+              </tr>
+             <tr>
+                <th scope="row">5</th>
+                <td colspan="1">image</td>
+                <td colspan="1">text  </td>                
+              </tr>
+               <tr>
+                <th scope="row">6</th>
+                <td colspan="1">status</td>
+                <td colspan="1">integer(11) 0 or 1 | 0 = inactive | 1 = active </td>                
+              </tr>
+            </tbody>
+          </table>
+        </table>
+      </section>
+      <!-- post table data -->
+       <section class="section mb-4 category">
+        <h4>Posts table requirement</h4>
+        <table>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Si</th>
+                <th scope="col">Data name</th>
+                <th>Data Type</th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>id</td>
+                <td>integer(11)</td>                
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>post_title</td>
+                <td>varchar (255) </td>                
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="1">description</td>
+                <td colspan="1">text</td>                
+              </tr>             
+            <tr>
+                <th scope="row">4</th>
+                <td colspan="1">image</td>
+                <td colspan="1">text  </td>                
+            </tr>
+             <tr>
+                <th scope="row">5</th>
+                <td colspan="1">category_id</td>
+                <td colspan="1">integer(11) </td>                
+            </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td colspan="1">author_id</td>
+                <td colspan="1">integer(11) </td>                
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td colspan="1">publish_date</td>
+                <td colspan="1">date </td>                
+            </tr>
+             <tr>
+                <th scope="row">8</th>
+                <td colspan="1">meta_tags</td>
+                <td colspan="1">varchar(255) </td>                
+            </tr>
+            <tr>
+                <th scope="row">9</th>
+                <td colspan="1">status</td>
+                <td colspan="1">integer(11)  </td>                
+            </tr>
+            </tbody>
+          </table>
+        </table>
+      </section>
+
+       <!-- user table data -->
+       <section class="section mb-4 category">
+        <h4>Users table requirement</h4>
+        <table>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Si</th>
+                <th scope="col">Data name</th>
+                <th>Data Type</th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>id</td>
+                <td>integer(11)</td>                
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>name</td>
+                <td>varchar (255) </td>                
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="1">email</td>
+                <td colspan="1">varchar(255)</td>                
+              </tr>             
+            <tr>
+                <th scope="row">4</th>
+                <td colspan="1">address</td>
+                <td colspan="1">text  </td>                
+            </tr>
+             <tr>
+                <th scope="row">5</th>
+                <td colspan="1">image</td>
+                <td colspan="1">text </td>                
+            </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td colspan="1">user_role</td>
+                <td colspan="1">integer(11) || 1 = admin || 2 = Editor || 3 = Subscriber </td>                
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td colspan="1">status</td>
+                <td colspan="1">integer(11) || 1 for active user | 0 for inactive user </td>                
+            </tr>
+             
+            </tbody>
+          </table>
+        </table>
+      </section>
+      
+         <!-- comments table data -->
+       <section class="section mb-4 category">
+        <h4>Users table requirement</h4>
+        <table>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Si</th>
+                <th scope="col">Data name</th>
+                <th>Data Type</th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>id</td>
+                <td>integer(11)</td>                
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>post_id</td>
+                <td>integer(11) </td>                
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="1">user_id</td>
+                <td colspan="1"> integer(11) </td>                
+              </tr>             
+            <tr>
+                <th scope="row">4</th>
+                <td colspan="1"> comments </td>
+                <td colspan="1">text  </td>                
+            </tr>
+             <tr>
+                <th scope="row">5</th>
+                <td colspan="1">publish_date</td>
+                <td colspan="1">datetime </td>                
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td colspan="1">status</td>
+                <td colspan="1">integer(11) || 1 for active user | 0 for inactive user </td>                
+            </tr>             
+            </tbody>
+          </table>
+        </table>
+      </section>
+
+         <!-- options table data -->
+       <section class="section mb-4 category">
+        <h4>Options table requirement</h4>
+        <table>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Si</th>
+                <th scope="col">Data name</th>
+                <th>Data Type</th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>logo</td>
+                <td>text</td>                
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>favicon</td>
+                <td>text </td>                
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="1">phone</td>
+                <td colspan="1"> integer(11) </td>                
+              </tr>             
+            <tr>
+                <th scope="row">4</th>
+                <td colspan="1"> email </td>
+                <td colspan="1">text  </td>                
+            </tr>
+             <tr>
+                <th scope="row">5</th>
+                <td colspan="1">address</td>
+                <td colspan="1">text </td>                
+            </tr>
+                    
+            </tbody>
+          </table>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

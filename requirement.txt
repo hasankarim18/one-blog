@@ -1,0 +1,12 @@
+
+1. Category / Sub Category
+2. Blog Post
+3. User - Editor / Admin / Subscriber 
+4. Comments
+5. Options - Logo / Favicon / Email / Phone
+
+note.  First you design the database and then start coding.
+
+note. 1. wordpress saves everything in post table
+
+note. In an ecommerce store generally no product is deleted. (soft delete) Front end theke sorai neya holeo back end a akta entry thake.
