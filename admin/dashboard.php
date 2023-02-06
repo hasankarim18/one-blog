@@ -1,11 +1,4 @@
-<?php include './inc/header.php' ?>
-
-
-
-    <!-- ########## START: MAIN PANEL ########## -->
-   
-
-
+<?php include './inc/header.php'; ?>
       <div class="br-pagetitle">
         <i class="icon ion-ios-home-outline"></i>
         <div>
@@ -13,7 +6,6 @@
           <p class="mg-b-0">Do bigger things with Bracket plus, the responsive bootstrap 4 admin template.</p>
         </div>
       </div>
-
       <div class="br-pagebody">
         <div class="row row-sm">
           <div class="col-sm-6 col-xl-3">
@@ -363,8 +355,5 @@
           </div><!-- col-4 -->
         </div><!-- row -->
 
-      </div><!-- br-pagebody -->
-     
-
-
+      </div>
 <?php include './inc/footer.php'; ?>

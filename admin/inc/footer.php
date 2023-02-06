@@ -1,4 +1,3 @@
- 
  </div>
  <footer class="br-footer">
      <div class="footer-left">
@@ -37,6 +36,19 @@
  <script src="assets/js/map.shiftworker.js"></script>
  <script src="assets/js/ResizeSensor.js"></script>
  <script src="assets/js/dashboard.js"></script>
+ <!-- ck editor -->
+ <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+
+ <!-- ck editor 4 calling function -->
+ <script>
+     CKEDITOR.replace('description');
+     CKEDITOR.replace('updateDescription');
+     CKEDITOR.replace('updateDescription2');
+ </script>
+
+
+
+
  <script>
      $(function() {
          'use strict'
@@ -68,3 +80,5 @@
  </body>
 
  </html>
+
+ <?php ob_end_flush(); ?>

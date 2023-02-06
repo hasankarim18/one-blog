@@ -1,6 +1,14 @@
-<?php include 'inc/db.php'; ?>
 
+<?php ob_start();
+    session_start();
+    include 'inc/db.php'; 
 
+   
+if(empty($_SESSION['email']) && empty($_SESSION['id'])){
+    header("Location:index.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +23,7 @@
     <title>One Blog-Dashboard</title>
 
     <!-- vendor css -->
-   
+
 
     <link href="assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="assets/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
@@ -31,17 +39,6 @@
 </head>
 
 <body>
-
-
-    <!-- ########## START: LEFT Menubar ########## -->
-    <?php include 'inc/menubar.php'; ?>
-    <!-- ########## END: LEFT Menubar ########## -->
-
-    <!-- ########## START: HEAD PANEL ########## -->
-    <?php include 'inc/topbar.php'; ?>
-    <!-- ########## END: HEAD PANEL ########## -->
-
-    <!-- ########## START: RIGHT PANEL is deleted because it is not necessary for this project ########## -->
-
-
+    <?php  include  'inc/menubar.php'; ?>
+    <?php  include 'inc/topbar.php'; ?>
     <div class="br-mainpanel">

@@ -1,5 +1,4 @@
-   <!-- ########## START: HEAD PANEL ########## -->
-   <div class="br-header">
+<div class="br-header">
        <div class="br-header-left">
            <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
            <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
@@ -19,17 +18,25 @@
           
                <!-- notification option end -->
                <!-- dropdown for admin users -->
+               
                <div class="dropdown">
                    <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                       <span class="logged-name hidden-md-down">Katherine</span>
+                       <span class="logged-name hidden-md-down"> <?php echo $_SESSION['email']; ?> </span>
                        <img src="https://via.placeholder.com/500" class="wd-32 rounded-circle" alt="">
                        <span class="square-10 bg-success"></span>
                    </a>
                    <div class="dropdown-menu dropdown-menu-header wd-250">
                        <div class="tx-center">
                            <a href=""><img src="https://via.placeholder.com/500" class="wd-80 rounded-circle" alt=""></a>
-                           <h6 class="logged-fullname">Katherine P. Lumaad</h6>
-                           <p>youremail@domain.com</p>
+                           <h6 class="logged-fullname">
+                            <?php 
+                                // print userName from session
+
+                              
+                                echo $_SESSION['email'];
+                            ?>
+                           </h6>
+                           <p> <?php echo $_SESSION['email']; ?> </p>
                        </div>
                        <hr>
                        <div class="tx-center">
@@ -44,7 +51,7 @@
                            <li><a href=""><i class="icon ion-ios-download"></i> Downloads</a></li>
                            <li><a href=""><i class="icon ion-ios-star"></i> Favorites</a></li>
                            <li><a href=""><i class="icon ion-ios-folder"></i> Collections</a></li>
-                           <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
+                           <li><a href="logout.php"><i class="icon ion-power"></i> Sign Out</a></li>
                        </ul>
                    </div><!-- dropdown-menu -->
                </div><!-- dropdown -->
