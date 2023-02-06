@@ -1,0 +1,8 @@
+
+1. thumbnail
+2. title
+3. paosted by
+4. category
+5. post_date 
+6. meta tags
+7. view count
