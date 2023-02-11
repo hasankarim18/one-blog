@@ -93,9 +93,98 @@ function deleteCatgory($id, $name, $is_parent, $db){
 }
 
 
+/******* 
+ * add posts
+ * 
+*/
 
-//   
+function addPosts($db, $author_id){
+ // echo $author_id;
+ $date = date("Y-m-d");
 
+?>
+  <div class="">
+    <form  action="posts.php?do=store" method="POST">
+      <input type="hidden" name="post_author_id" value="<?php echo $author_id; ?>" >
+      <input type="hidden" name="post_date" value="<?php echo $date; ?>" >
+      <div class="row"> 
+        <div class="col-md-6">
+          <div class="form-group mb-3">
+            <label for="post_title">Post Title</label>
+            <input type="text" name="post_title" class="form-control">
+          </div>
+          <div class="form-group mb-3">
+            <label for="post_descripttion">Description</label>
+            <textarea class="form-control" name="post_descripttion" id="postDescription" ></textarea>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="">Category</label>
+              <select name="post_category_id" class="form-control">
+              <?php  
+                $query = "SELECT * FROM category WHERE is_parent = 0 AND status = 1 ORDER BY cat_name ASC";
+                $parent_cat = mysqli_query($db, $query);
+
+                while ($row = mysqli_fetch_assoc($parent_cat)) {
+                  $parent_cat_id = $row['cat_id'];
+                  $parent_cat_name = $row['cat_name'];
+                ?>               
+                <option value="<?php echo $parent_cat_id;  ?>">
+                   <?php echo $parent_cat_name; ?>
+                 </option>
+              <?php   
+              $child_cat_sql = "SELECT * FROM category WHERE is_parent = '$parent_cat_id' AND status = 1 ORDER BY cat_name ASC";
+              $child_cat_query = mysqli_query($db,$child_cat_sql);
+
+              while ($row = mysqli_fetch_assoc($child_cat_query) ) {
+                $child_cat_id = $row['cat_id'];
+                $child_cat_name = $row['cat_name'];
+              ?>
+               <option value="<?php echo $child_cat_id; ?>">--<?php echo $child_cat_name; ?></option>
+             <?php 
+              }             
+              }
+
+              ?>            
+               
+              </select>
+            </div>
+            <div class="form-group mb-3">
+              <label for="">Status</label>
+              <select name="post_status" id="" class="form-control">
+                <option value="1">Publish</option>
+                <option value="0">Save as draft</option>
+              </select>
+            </div>
+            <div class="form-group mb-3">
+              <label for="">Tags</label>
+              <input 
+              class="form-control" 
+              placeholder="Put comma after each tags" 
+              type="text"
+              name="post_tags" 
+             >
+            </div>
+            <div class="form-group mb-3">
+              <label for="">Post image</label>
+              <input name="post_image" type="file" class="form-control">
+            </div>
+            <div class="form-group text-right">
+              <input type="submit" value="Add Post" name="add_post" class="btn btn-primary" />
+            </div>
+        </div>
+
+      </div>
+      
+    </form>
+  </div>
+
+
+
+
+<?php 
+}
 
 ?>
 

@@ -41,9 +41,12 @@
 
  <!-- ck editor 4 calling function -->
  <script>
+     CKEDITOR.replace('postDescription');
      CKEDITOR.replace('description');
+     
      CKEDITOR.replace('updateDescription');
      CKEDITOR.replace('updateDescription2');
+    
  </script>
 
 

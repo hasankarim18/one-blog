@@ -420,11 +420,11 @@
                                                         <div class="form-group">
                                                             <label for="">Description </label>
                                                             <!-- ck editor it link in footer -->
-                                                            <textarea id="updateDescription2" name="cat_description" class="form-control" id="" cols="30" rows="5">
+                                                            <textarea id="updateDescription2" name="cat_description" class="form-control" >
                                                     <?php
                                                     echo $description;
                                                     ?>
-                                                </textarea>
+                                                     </textarea>
                                                         </div>
                                                         <!-- category image -->
                                                         <div class="form-group">

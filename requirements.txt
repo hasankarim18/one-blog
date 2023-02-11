@@ -6,3 +6,9 @@
 5. post_date 
 6. meta tags
 7. view count
+
+// needs to create 
+
+1. logo image link in backend and show it in the fron end
+2. social media link fb, tw, insta link in the backend
+2. footer section 

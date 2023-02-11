@@ -40,6 +40,21 @@
             </ul>
         </li>
 
+         <!-- post section -->
+        <li class="br-menu-item">
+            <a href="posts.php" class="br-menu-link with-sub">
+                <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+                <span class="menu-item-label">Post Management</span>
+            </a><!-- br-menu-link -->
+
+            <ul class="br-menu-sub">
+               
+                <li class="sub-item"><a href="posts.php?do=add" class="sub-link">Add new posts</a></li>
+                <li class="sub-item"><a href="posts.php?do=manage" class="sub-link">Manage all posts</a></li>
+                <!-- <li class="sub-item"><a href="card-listing.html" class="sub-link">Shop &amp; Listing</a></li> -->
+            </ul>
+        </li>
+
     </ul><!-- br-sideleft-menu -->
 
 

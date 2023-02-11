@@ -23,7 +23,26 @@
                     How Engaged Our Users Daily
                 </h6>
                 <!-- page content start  -->
+                    <?php  
+                        $do = isset($_GET['do']? $_GET['do']: 'Manage');
 
+                        if($do == 'Manage'){
+                            echo 'We will manage all the users from here';
+                        }
+                        else if($do == 'Add'){
+                            echo 'We will add new user from here and we are going to create the html in this templae'
+                        }
+                        else if($do = 'Store'){
+                            echo 'After get data from ADD we will store the data in the Database';
+                        }
+                        else if($do == 'Update'){
+                            echo 'After get the new data we will update inside the database';
+                        }
+                        else if($do = 'Delete'){
+                            echo 'We will delete the user and all the information of the user from database';
+                        }
+
+                    ?>
                 <!-- page content end -->
             </div><!-- d-flex -->
         </div>
