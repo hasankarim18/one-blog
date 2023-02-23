@@ -91,7 +91,7 @@
               session_unset();
               session_destroy();
              // header("Location:index.php");
-             echo "Subscriber cant't access in admin area.";
+             echo "Subscriber cant't access in admin area. If you want to get access Super admin must chage your status Subscriber to Editor first!!!";
             } else if ($_SESSION['status'] == '0' ) {
               echo "User not active";
             }
