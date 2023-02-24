@@ -1,35 +1,35 @@
 <?php
 
-    function uploadImage($name, $size, $type, ){
+    function uploadImage($post_name){
         
-        $size         = $_FILES["$type"]['size'];
-        $type         = $_FILES["$type"]['type'];
+        $name         = $_FILES["$post_name"]['name'];
+        $size         = $_FILES["$post_name"]['size'];
+        $type         = $_FILES["$post_name"]['type'];
 
         $image_extension   = strtolower(end(explode('.', $name)));
         $allowe_extension  = array("jpg", "jpeg", "png");
 
         // move the image into the server temporary folder 
-        $image_tmp = $_FILES['image']['tmp_name'];
+        $image_tmp = $_FILES[$post_name]['tmp_name'];
 
         if (in_array($image_extension, $allowe_extension) === false) {
-            $error[] = "Your uploaded file is not an image";
+            $error = "Your uploaded file is not an image";
         }
 
         if ($size > 1048574) {
-            $error[] = "Your uploaded file is too large. Max size 1 MB";
+            $error = "Your uploaded file is too large. Max size 1 MB";
         }
 
-        if (!empty($error)) {
-            foreach ($error as $err) {
-                $updatedImg =  '<div class="alert alert-danger"> ' . $err . '</div>';
-            }
-        } else {
+        $updatedImg = '';
+
+        if (empty($error)) {
+          
             $updatedImg = rand().'-'. date('Y-m-d') . '-' . $name;
           
         }
     
 
-    return array('img'=> $updatedImg, 'tmp'=> $image_tmp);
+    return array('img'=> $updatedImg, 'tmp'=> $image_tmp, 'err' => $error);
   
 
 
@@ -104,7 +104,7 @@ function addPosts($db, $author_id){
 
 ?>
   <div class="">
-    <form  action="posts.php?do=store" method="POST">
+    <form enctype="multipart/form-data"  action="posts.php?do=store" method="POST">
       <input type="hidden" name="post_author_id" value="<?php echo $author_id; ?>" >
       <input type="hidden" name="post_date" value="<?php echo $date; ?>" >
       <div class="row"> 

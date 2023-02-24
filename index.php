@@ -1,4 +1,4 @@
-<?php  include 'inc/header.php'; ?>
+<?php   include 'inc/header.php'; ?>
 <?php  include 'inc/navigation.php'; ?>			
 
 	<div role="main" class="main">

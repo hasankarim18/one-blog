@@ -189,7 +189,7 @@
                                             <li>
                                                 <a href="" data-toggle="modal"
                                                  data-target="#deleteModal<?php echo $cat_id; ?>">
-                                                 <?php  echo $cat_id; ?>
+                                                
                                                  <i class="fa-solid fa-trash-can"></i></a>
                                             </li>
                                         </ul>
