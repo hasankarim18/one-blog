@@ -20,15 +20,57 @@
                                 class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
                                 <nav class="collapse header-mobile-border-top">
                                     <ul class="nav nav-pills" id="mainNav">
+                                        <?php  
+                                        // is_parent = 0 = parent
+                                        // is_parent = 1 = child
+                                        $sql = "SELECT cat_id AS 'pCatId', cat_name AS 'pCatName' FROM category WHERE is_parent = 0 AND status = 1 ORDER BY cat_name ASC";
+
+                                        $parentCatData = mysqli_query($db, $sql); 
+
+                                      //  $countData = mysqli_num_rows($parentCatData);
+
+                                       while($row = mysqli_fetch_assoc($parentCatData)){
+                                            extract($row);
+                                                                            
+                                    ?>
                                         <li class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle" href="index.php">
-                                                Home
+                                            <a class="dropdown-item dropdown-toggle"
+                                             href="category.php?cat_id=<?php echo $pCatId; ?>">
+                                                <?php  echo $pCatName; ?>
                                             </a>
                                             <!-- home item dropdown was here -->
+                                            <?php  
+                                            $childSql = "SELECT cat_id AS 'childCatId', cat_name AS 'childCatName' FROM category WHERE is_parent = '$pCatId' AND status = 1 ORDER BY cat_name ASC";
+                                             $childCatData = mysqli_query($db, $childSql); 
+
+                                             if($childCatData){                                                
+                                            ?>
+                                            <ul class="dropdown-menu">
+                                                <?php  
+                                                while ($row = mysqli_fetch_assoc($childCatData)) {
+                                                    extract($row);
+                                            ?>
+                                                <li>
+                                                    <a class="dropdown-item" 
+                                                     href="category.php?cat_id=<?php echo $childCatId; ?>"
+                                                    >
+                                                        <?php  echo $childCatName; ?>
+                                                    </a>
+                                                </li>
+                                                
+                                                <?php 
+                                                }
+                                            ?>
+
+
+                                            </ul>
+                                            <?php 
+                                             }
+                                             ?>
                                         </li>
 
-										<!-- nav_commented was here -->
-                                      
+                                        <!-- nav_commented was here -->
+                                        <?php } ?>
                                     </ul>
                                 </nav>
                             </div>

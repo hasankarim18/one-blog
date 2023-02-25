@@ -3,42 +3,99 @@
 
 <div role="main" class="main">
 
+    <?php  
+            if(isset($_GET['cat_id'])){
+             $cat_id = $_GET['cat_id'];
+             $sql = "SELECT `cat_name`,`is_parent`,`status` FROM category WHERE cat_id = '$cat_id'";
+			 $cat_query = mysqli_query($db, $sql);
+
+			 $row = mysqli_fetch_assoc($cat_query);
+			 extract($row);
+			 $parentCatName = null;
+			 $parentCatId = null;
+
+			 if($is_parent != 0){
+				$getParentSql = "SELECT `cat_name`, `cat_id` FROM category WHERE cat_id = '$is_parent'";
+				$getParentQuery = mysqli_query($db, $getParentSql);
+				$row = mysqli_fetch_assoc($getParentQuery);
+				$parentCatName = $row['cat_name'];
+				$parentCatId = $row['cat_id'];
+			 }
+			             
+        ?>
     <section class="page-header page-header-modern bg-color-light-scale-1 page-header-md">
         <div class="container">
             <div class="row">
 
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
 
-                    <h1 class="text-dark font-weight-bold text-8">Grid 3 Columns</h1>
-                    <span class="sub-title text-dark">Check out our Latest News!</span>
+                    <h1 class="text-dark font-weight-bold text-8"><?php  echo $cat_name; ?></h1>
+                    <!-- <span class="sub-title text-dark">Check out our Latest News!</span> -->
                 </div>
 
                 <div class="col-md-12 align-self-center order-1">
 
                     <ul class="breadcrumb d-block text-center">
-                        <li><a href="#">Home</a></li>
-                        <li class="active">Blog</li>
+                        <?php  
+								if($is_parent == 0){
+								?>
+                        <li class="active"><?php  echo $cat_name; ?></li>
+                        <?php 
+								}else {
+								?>
+                        <li><a href="#"><?php echo  $parentCatName ? $parentCatName : null;  ?></a></li>
+                        <li class="active"><?php  echo $cat_name; ?></li>
+                        <?php 
+								}
+							?>
+                        <!-- <li><a href="#">Home</a></li>
+							<li class="active">Blog</li> -->
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-
-
     <div class="container py-4">
         <div class="row">
-            <?php 
-					$sql = "SELECT * FROM post WHERE status = 1 ORDER BY id DESC";
-					// last post will be first;
-				
-				?>
-            <div class="col-12">
+            <div class="col">
                 <div class="blog-posts">
                     <div class="row">
                         <?php  
-							$allPostQuery = mysqli_query($db, $sql);
-							while ($row = mysqli_fetch_assoc($allPostQuery)) {
+						//echo $is_parent; echo '<br />';
+					
+						$catPostSql= null;
+						if($is_parent == 0){
+							
+							$parentId = $cat_id;
+							
+							$allChildCat = "SELECT `cat_id` FROM category WHERE is_parent = '$cat_id'";
+							$allChildCatQuery = mysqli_query($db,$allChildCat);
+							$ids = [$cat_id];
+							while ($row = mysqli_fetch_assoc($allChildCatQuery)) {
+								$childCatId = $row['cat_id'];
+							 //	echo $childCatId; echo '<br />';
+							  array_push($ids, $childCatId);
+							}
+							//print_r($arr);
+							// $ids = array(26, 27, 28);
+							$ids_str = implode(',', $ids);							
+							$catPostSql = "SELECT *
+									FROM post
+									WHERE category_id = 26
+									OR category_id IN ($ids_str)";
+
+							// $catPostSql = "SELECT *
+							// 			FROM post
+							// 			WHERE id = 26
+							// 			AND id IN (27, 28)"
+							
+						}else {
+							$catPostSql = "SELECT * FROM post WHERE category_id = '$cat_id'";
+						}					
+							
+							$catPostQuery = mysqli_query($db, $catPostSql);
+							while ($row = mysqli_fetch_assoc($catPostQuery)) {
 							extract($row);
 						?>
                         <div class="col-4">
@@ -123,10 +180,13 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
+    <?php 
+            }
+        ?>
+
+
 </div>
 
 <?php  include 'inc/footer.php'; ?>

@@ -1,3 +1,10 @@
+<?php  
+	 ob_start();
+    session_start();
+    include 'admin/inc/db.php'; 
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -6,7 +13,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title>Grid 3 Columns | Porto - Responsive HTML5 Template</title>	
+		<title>One Blog</title>	
 
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
