@@ -155,35 +155,42 @@
                   //  echo 'After get the new data we will update inside the database';
                 }
                 else if($do == 'edit'){
-                      if(isset($_POST['edit_post'])){
-                        
-                        $post_id        = $_POST['post_id']; 
-                        $old_image_name = $_POST['old_image_name'];
+                      if(isset($_POST['edit_post'])){ 
+                    $old_image_name = $_POST['old_image_name'];
+                    $updatedImageName = $_FILES["update_post_image"]['name'];  
+                      
+                    $updateImage = uploadImage('update_post_image');
+                   // $image_img = $imgD ->img;
+                   // $image_tmp = $imgD ->tmp;//
+                    $updateImg = $updateImage['img'];
+                    $updateImage_tmp = $updateImage['tmp'];
 
-                        echo $old_image_name;echo '<br />';
-                        echo $post_id; echo '<br />';
+                    $post_id                  = $_POST['post_id']; 
+                    $edit_post_title          = $_POST['edit_post_title'];
+                    $edit_post_descripttion   = $_POST['edit_post_descripttion'];
+                    $edit_post_category_id    = $_POST['edit_post_category_id'];
+                    $edit_post_status         = $_POST['edit_post_status'];
+                    $edit_post_tags           = $_POST['edit_post_tags'];
 
-                        $updatedImageName = $_FILES["update_post_image"]['name'];
-                      //  echo $updatedImageName; echo '<br />';
-
-                    $update_post_sql = null;
+                  //  $update_post_sql = null;
 
                     if(!empty($updatedImageName)){
-                     //  $update_post_sql = ""
+                       $update_post_sql = "UPDATE `post` SET `title`='$edit_post_title',`description`='$edit_post_descripttion',`category_id`='$edit_post_category_id',`status`='$edit_post_status',`tags`='$edit_post_tags',`image`='$updateImg' WHERE id = '$post_id'";
+                       $update_with_image_query = mysqli_query($db, $update_post_sql);
+                       if($update_with_image_query){
+                        move_uploaded_file($updateImage_tmp, "assets/images/posts/" . $updateImg);
+                        header("Location:posts.php");
+                       }
                     }else {
-                        echo 'update without image';
+                         $update_post_sql = "UPDATE `post` SET `title`='$edit_post_title',`description`='$edit_post_descripttion',`category_id`='$edit_post_category_id',`status`='$edit_post_status',`tags`='$edit_post_tags' WHERE id = '$post_id'";
+                       $update_without_image_query = mysqli_query($db, $update_post_sql);
+                       if($update_without_image_query){
+                       
+                        header("Location:posts.php");
+                       }
                     }
 
 
-                  //  $updateImage = uploadImage('update_post_image');
-                    // $image_img = $imgD ->img;
-                    // $image_tmp = $imgD ->tmp;
-                    // $updateImg = $updateImage['img'];
-                    // $updateImage_tmp = $updateImage['tmp'];
-                    //     //  print_r($postImage['img']);
-
-                    //  // print_r(uploadImage());
-                    //     $post_update_sql = "UPDATE `post` SET `title`='[value-2]',`description`='[value-3]',`category_id`='[value-4]',`posted_by`='[value-5]',`status`='[value-6]',`tags`='[value-7]',`view_count`='[value-8]',`image`='$' WHERE id = '$post_id'";
 
                     // $insert_post = mysqli_query($db, $post_update_sql);
 

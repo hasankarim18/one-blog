@@ -215,7 +215,7 @@ function editPosts($db, $id, $title, $description, $cat_id, $posted_by, $status,
             <div class="form-group mb-3">
               <label for="">Change Category</label>
               <?php   echo $cat_id; ?>
-              <select name="post_category_id" class="form-control">
+              <select name="edit_post_category_id" class="form-control">
               <?php  
                 $query = "SELECT * FROM category WHERE is_parent = 0 AND status = 1 ORDER BY cat_name ASC";
                 $parent_cat = mysqli_query($db, $query);
@@ -252,7 +252,7 @@ function editPosts($db, $id, $title, $description, $cat_id, $posted_by, $status,
             </div>
             <div class="form-group mb-3">
               <label for="">Status</label>
-              <select name="post_status" id="" class="form-control">
+              <select name="edit_post_status" id="" class="form-control">
                 <option value="1">Publish</option>
                 <option value="0">Save as draft</option>
               </select>
@@ -263,7 +263,7 @@ function editPosts($db, $id, $title, $description, $cat_id, $posted_by, $status,
               class="form-control" 
               placeholder="Put comma after each tags" 
               type="text"
-              name="post_tags" 
+              name="edit_post_tags" 
              >
             </div>
             <div class="form-group mb-3">
