@@ -9,16 +9,16 @@
 
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
 
-                    <h1 class="text-dark font-weight-bold text-8">Grid 3 Columns</h1>
-                    <span class="sub-title text-dark">Check out our Latest News!</span>
+                    <h1 class="text-dark font-weight-bold text-8">All Posts</h1>
+                    <!-- <span class="sub-title text-dark">Check out our Latest News!</span> -->
                 </div>
 
                 <div class="col-md-12 align-self-center order-1">
 
-                    <ul class="breadcrumb d-block text-center">
+                    <!-- <ul class="breadcrumb d-block text-center">
                         <li><a href="#">Home</a></li>
                         <li class="active">Blog</li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                         <div class="col-4">
                             <article class="post post-medium border-0 pb-0 mb-5">
                                 <div class="post-image">
-                                    <a href="single.php?post=detail&post_id=<?php echo $id; ?>">
+                                    <a href="single.php?postDetail&post_id=<?php echo $id; ?>">
                                         <img style="height:280px;" src="admin/assets/images/posts/<?php echo $image; ?>"
                                             class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
                                             alt="<?php echo $title; ?>" />

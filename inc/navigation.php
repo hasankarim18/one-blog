@@ -43,7 +43,7 @@
                                             $childSql = "SELECT cat_id AS 'childCatId', cat_name AS 'childCatName' FROM category WHERE is_parent = '$pCatId' AND status = 1 ORDER BY cat_name ASC";
                                              $childCatData = mysqli_query($db, $childSql); 
 
-                                             if($childCatData){                                                
+                                             if(mysqli_num_rows($childCatData)>0){                                                
                                             ?>
                                             <ul class="dropdown-menu">
                                                 <?php  

@@ -179,13 +179,14 @@
                        $update_with_image_query = mysqli_query($db, $update_post_sql);
                        if($update_with_image_query){
                         move_uploaded_file($updateImage_tmp, "assets/images/posts/" . $updateImg);
+                        $update_post_sql = "";
                         header("Location:posts.php");
                        }
                     }else {
                          $update_post_sql = "UPDATE `post` SET `title`='$edit_post_title',`description`='$edit_post_descripttion',`category_id`='$edit_post_category_id',`status`='$edit_post_status',`tags`='$edit_post_tags' WHERE id = '$post_id'";
                        $update_without_image_query = mysqli_query($db, $update_post_sql);
                        if($update_without_image_query){
-                       
+                       $update_post_sql =  "";
                         header("Location:posts.php");
                        }
                     }
