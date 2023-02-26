@@ -44,3 +44,7 @@ if(empty($_SESSION['email']) && empty($_SESSION['id'])){
     <?php  include  'inc/menubar.php'; ?>
     <?php  include 'inc/topbar.php'; ?>
     <div class="br-mainpanel">
+
+    <?php  
+          $singlePostBaseLink = "single.php?postDetail&post_id=";
+    ?>

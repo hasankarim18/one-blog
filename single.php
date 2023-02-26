@@ -68,7 +68,7 @@
 
                         <div class="post-content ml-0">
 
-                            <h2 class="font-weight-bold"><a href="blog-post.html">
+                            <h2 class="<?php $singlePostBaseLink.$post_id; ?>"><a href="blog-post.html">
                                 <?php  echo $title; ?>
                             </a></h2>
 

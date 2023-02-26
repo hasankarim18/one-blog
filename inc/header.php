@@ -59,6 +59,8 @@
 	</head>
 
 <body>
-
+	<?php  
+		 $singlePostBaseLink = "single.php?postDetail&post_id=";
+	?>
 
 		<div class="body">

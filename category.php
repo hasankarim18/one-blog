@@ -95,13 +95,20 @@
 						}					
 							
 							$catPostQuery = mysqli_query($db, $catPostSql);
+							$numRow = mysqli_num_rows($catPostQuery);
+						
+							if($numRow == 0){
+								echo '<div class="alert alert-info col-12 text-center text-danger "> No posts found in this category</div>';
+							}
 							while ($row = mysqli_fetch_assoc($catPostQuery)) {
+							
 							extract($row);
 						?>
                         <div class="col-4">
                             <article class="post post-medium border-0 pb-0 mb-5">
                                 <div class="post-image">
-                                    <a href="single.php?post=detail&post_id=<?php echo $id; ?>">
+									<?php  ?>
+                                    <a href="<?php echo $singlePostBaseLink.$id; ?>">
                                         <img style="height:280px;" src="admin/assets/images/posts/<?php echo $image; ?>"
                                             class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
                                             alt="<?php echo $title; ?>" />

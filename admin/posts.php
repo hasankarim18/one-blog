@@ -5,7 +5,11 @@
 
 <!-- ########## START: MAIN PANEL ########## -->
 
-
+<?php  
+    // single post link in the form end
+  
+   //  echo $singlePostbase;
+?>
 
 <div class="br-pagetitle">
     <i class="icon ion-ios-home-outline"></i>
@@ -21,7 +25,7 @@
         <div class="col-lg-12">
             <div class="card bd-0 shadow-base p-4">
                 <h6 class="tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1">
-                    Manage all posts
+                    Manage all posts                     
                 </h6>
                 <!-- page content start  -->
                 <?php  
@@ -60,11 +64,16 @@
                         <div class="d-flex justify-content-between"">
                             <h6><i>Post Title: </i><?php echo $title; ?></h6>
                             <div class="btn-group">
+                               
                                 <a href="posts.php?do=update&id=<?php echo $post_id;  ?>" class="btn btn-warning">Edit Posts</a>
                                 <a href=""
                                  data-toggle="modal" 
                                  data-target="#deleteModal<?Php echo $post_id;  ?>"
                                  class="btn btn-danger text-white">Delete Posts</a>
+                                 
+                                 <a href="../<?php echo $singlePostBaseLink.$post_id; ?>"
+                                    target="_blank"                                
+                                     class="btn btn-info text-white"> View Posts</a>
                                 
                             </div>
                              <?php  deletePostModal($post_id, $title, $postImageSrc) ?>
@@ -74,7 +83,15 @@
                         </div>
                         <div class="row align-items-center rounded-2">
                             <div class="col-12 col-md-8">
-                                <p> <i>Description: </i> <?php echo $description;  ?></p>
+                                <span class="pe-2" style="padding-right:10px;float:left;"><i><strong> Description:</strong></i></span>
+                                <p style="float:left;">
+                                 <?php     
+                                    $words = explode(' ', $description);
+                                    $short_array = array_slice($words, 0, 30);
+                                    $short_string = implode(' ', $short_array);
+                                     echo $short_string . ' ....';
+                                      ?>
+                                </p>
                             </div>
                             <div class="col-12 col-md-4">
                                 <img width="150px" src="<?php echo "assets/images/posts/". $postImageSrc; ?>" alt="<?php echo $title; ?>">
@@ -175,11 +192,15 @@
                   //  $update_post_sql = null;
 
                     if(!empty($updatedImageName)){
+                        
                        $update_post_sql = "UPDATE `post` SET `title`='$edit_post_title',`description`='$edit_post_descripttion',`category_id`='$edit_post_category_id',`status`='$edit_post_status',`tags`='$edit_post_tags',`image`='$updateImg' WHERE id = '$post_id'";
-                       $update_with_image_query = mysqli_query($db, $update_post_sql);
-                       if($update_with_image_query){
                         move_uploaded_file($updateImage_tmp, "assets/images/posts/" . $updateImg);
+                       $update_with_image_query = mysqli_query($db, $update_post_sql);
+
+                       if($update_with_image_query){
+                       
                         $update_post_sql = "";
+                        unlink("assets/images/posts/" . $old_image_name);
                         header("Location:posts.php");
                        }
                     }else {

@@ -44,7 +44,7 @@
                         <div class="col-4">
                             <article class="post post-medium border-0 pb-0 mb-5">
                                 <div class="post-image">
-                                    <a href="single.php?postDetail&post_id=<?php echo $id; ?>">
+                                    <a href="<?php echo $singlePostBaseLink.$id; ?>">
                                         <img style="height:280px;" src="admin/assets/images/posts/<?php echo $image; ?>"
                                             class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
                                             alt="<?php echo $title; ?>" />
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="post-content">
                                     <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a
-                                            href="blog-post.html"><?php  echo $title; ?></a></h2>
+                                            href="<?php echo $singlePostBaseLink.$id; ?>"><?php  echo $title; ?></a></h2>
                                     <p>
                                         <?php 
 										 $words = explode(" ", $description);
@@ -97,7 +97,7 @@
 											<span>
 												<i class="far fa-comments"></i> <a href="#">12 Comments</a>
 											</span>
-											<div class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></div>
+											<div class="d-block mt-2"><a href="<?php  echo $singlePostBaseLink.$id; ?>" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></div>
 										</div>
                                     <!-- post meta -->
                                 </div>

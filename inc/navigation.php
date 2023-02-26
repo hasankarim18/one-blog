@@ -6,9 +6,10 @@
                 <div class="header-column header-column-border-right flex-grow-0">
                     <div class="header-row pr-4">
                         <div class="header-logo">
-                            <a href="index.php">
-                                <img alt="Porto" width="100" height="48" data-sticky-width="82" data-sticky-height="40"
-                                    src="assets/img/logo.png">
+                            <a class="text-dark fs-1" style="font-size:30px;" href="index.php">
+                                <!-- <img alt="Porto" width="100" height="48" data-sticky-width="82" data-sticky-height="40"
+                                    src="assets/img/logo.png"> -->
+                                One Blog
                             </a>
                         </div>
                     </div>
