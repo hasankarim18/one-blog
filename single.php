@@ -16,28 +16,8 @@
         $row = mysqli_fetch_assoc($singlePostQuery);
         extract($row);
 
-        
-
-
     ?>
-    <!-- <section class="page-header page-header-modern bg-color-light-scale-1 page-header-md">
-        <div class="container">
-            <div class="row">
 
-                <div class="col-md-12 align-self-center p-static order-2 text-center">
-                    <h1 class="text-dark font-weight-bold text-8"><?php //  echo $title; ?></h1>                  
-                </div> 
-
-                <div class="col-md-12 align-self-center order-1">
-
-                    <ul class="breadcrumb d-block text-center">
-                        <li><a href="#">Home</a></li>
-                        <li class="active">Blog</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <div class="container py-4">
 
@@ -74,7 +54,16 @@
 
                             <div class="post-meta">
                                 <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                <span><i class="far fa-folder"></i> <a href="#">Lifestyle</a>, <a href="#">Design</a>
+                                <span>
+                                    <i class="far fa-folder"></i>
+                                    <?php  
+                                        // get category name
+                                        $catsql = "SELECT `cat_name`  FROM `category` WHERE cat_id = '$category_id'";
+                                        $catq = mysqli_query($db, $catsql);
+                                        $catrow = mysqli_fetch_assoc($catq);
+                                        extract($catrow);
+                                    ?>
+                                    <a href="#"><?php  echo $cat_name; ?></a>
                                 </span>
                                 <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
                             </div>
@@ -108,11 +97,11 @@
                                     <a  href="author.php?author&authorId=<?php echo $posted_by; ?>">
                                     <?php  echo $author; ?></a>
                                 </h4>
-                                <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
+                                <!-- <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
                                     <a href="blog-post.html">
                                         <img src="img/avatars/avatar.jpg" alt="">
                                     </a>
-                                </div>                             
+                                </div>                              -->
                               
                                
                             </div>

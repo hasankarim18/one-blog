@@ -7,7 +7,7 @@
             if(isset($_POST['search'])){
             
                 $searchText = $_POST['searchText'];
-         $sql = "SELECT * FROM post WHERE title LIKE '%$searchText%' ORDER BY id DESC";
+         $sql = "SELECT * FROM post WHERE title LIKE '%$searchText%' OR  description LIKE '%$searchText%' ORDER BY id DESC";
          $query = mysqli_query($db, $sql);     
 
          
@@ -49,8 +49,7 @@
                             }else {
                                 while ($row = mysqli_fetch_assoc($query)) {
                                     extract($row);
-                                }
-                            ?>
+                                ?>
                             <div class="col-4">
                                 <article class="post post-medium border-0 pb-0 mb-5">
                                     <div class="post-image">
@@ -120,6 +119,11 @@
                                     </div>
                                 </article>
                             </div>
+
+                                <?php 
+                                }
+                            ?>
+                          
                             <?php 
                             }
                        ?>

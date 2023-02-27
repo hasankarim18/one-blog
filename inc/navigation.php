@@ -33,7 +33,7 @@
                                        while($row = mysqli_fetch_assoc($parentCatData)){
                                             extract($row);
                                                                             
-                                    ?>
+                                        ?>
                                         <li class="dropdown">
                                             <a class="dropdown-item dropdown-toggle"
                                              href="category.php?cat_id=<?php echo $pCatId; ?>">

@@ -59,6 +59,8 @@
 	</head>
 
 <body>
+	<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="pCu26Vbj"></script>
 	<?php  
 		 $singlePostBaseLink = "single.php?postDetail&post_id=";
 	?>
