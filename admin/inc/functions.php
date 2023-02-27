@@ -39,6 +39,7 @@
 // ***************** delete category function 
 
 function deleteCatgory($id, $name, $is_parent, $db){
+ 
   ?>
 <div class="modal fade" id="deleteModal<?php  echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <form action="" method="POST">
@@ -51,6 +52,10 @@ function deleteCatgory($id, $name, $is_parent, $db){
          </button>
        </div>
        <div class="modal-body">
+        <?php  
+          
+          //  print_r($post_ids);;
+        ?>
          <h4> 
             Are you sure you want to delete <span class="text-danger"><?php  echo $name; ?></span>
          </h4>
@@ -78,13 +83,32 @@ function deleteCatgory($id, $name, $is_parent, $db){
     if(isset($_POST['delete_cat'])){
         $cat_id = $_POST['delete_cat_id'];
        // $dsql = "DELETE FROM `category` WHERE cat_id = '$cat_id'";
+          
+      
+          
+            
 
         // in case you want to delete both category and it's sub category together 
-         $dsql = "DELETE FROM category WHERE cat_id = '$cat_id'  OR is_parent = '$cat_id'";
+        $dsql = "DELETE FROM category WHERE cat_id = '$cat_id'  OR is_parent = '$cat_id'";
         
-        $deleteQuery = mysqli_query($db,$dsql );
+       $deleteQuery = mysqli_query($db,$dsql );
     if($deleteQuery){
-      header("Location:category.php");
+
+        $postSql = "SELECT `id` FROM post WHERE category_id = '$id'";
+            $postQuery = mysqli_query($db, $postSql);
+            $post_ids = [];
+            while ($row = mysqli_fetch_assoc( $postQuery)) {
+              $postCatId = $row['id'];
+            //  var_dump($postCatId);
+              array_push($post_ids,$postCatId );
+            //  $updateSql = "UPDATE `post` SET `category_id`= '17' WHERE id = '$postCatId'";
+            //  $updateQuery = mysqli_query($updateSql);
+            }
+            $post_ids_string = implode(',', $post_ids);
+            $updateSql = "UPDATE `post` SET `category_id`= '17' WHERE id IN ($post_ids_string)";
+
+
+            header("Location:category.php");
     }
     }
 

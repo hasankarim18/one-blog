@@ -59,6 +59,7 @@
                             $description = $row['description'];
                             $posted_by = $row['posted_by'];
                             $postImageSrc = $row['image'];
+                            $category_id  = $row['category_id'];
                         ?>
                     <div class="card p-2 m-2">
                         <div class="d-flex justify-content-between"">
@@ -79,7 +80,20 @@
                              <?php  deletePostModal($post_id, $title, $postImageSrc) ?>
                         </div>
                         <div>
-                            <h6>Author Id: <?php  echo $posted_by; ?> </h6>
+                            <h6>Author Id: <?php 
+                                $authorNameSql = "SELECT `name` FROM users WHERE id = ' $posted_by' ";
+                                $authorNameQuery = mysqli_query($db, $authorNameSql);
+                                $catRow = mysqli_fetch_assoc($authorNameQuery);
+                                extract($catRow);
+                                echo $name;
+                            ?> </h6>
+                            <h6>Category: <?php 
+                                $catNameSql = "SELECT `cat_name` FROM category WHERE cat_id = '$category_id' ";
+                                $catNameQuery = mysqli_query($db, $catNameSql);
+                                $catRow = mysqli_fetch_assoc($catNameQuery);
+                                extract($catRow);
+                                echo $cat_name; echo "---id:".$category_id;
+                            ?> </h6>
                         </div>
                         <div class="row align-items-center rounded-2">
                             <div class="col-12 col-md-8">

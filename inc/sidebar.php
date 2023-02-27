@@ -1,14 +1,24 @@
 <div class="col-lg-3 order-lg-2">
 			<aside class="sidebar">
-				<form action="page-search-results.html" method="get">
+				<!-- search for start -->
+				<!-- page-search-results.html -->
+				<form action="search.php" method="POST">
 					<div class="input-group mb-3 pb-1">
-						<input class="form-control text-1" placeholder="Search..." name="s" id="s" type="text">
+						<input
+							name="searchText"
+							 class="form-control text-1"
+							 placeholder="Search..."
+							 name="s"
+							 id="s"
+							 type="text">
 						<span class="input-group-append">
-							<button type="submit" class="btn btn-dark text-1 p-2"><i
-									class="fas fa-search m-2"></i></button>
+							<button name="search" type="submit" value="" class="btn btn-dark text-1 p-2">
+								<i class="fas fa-search m-2"></i>
+							</button>
 						</span>
 					</div>
 				</form>
+				<!-- search form end -->
 				<h5 class="font-weight-bold pt-4">Categories</h5>
 				<ul class="nav nav-list flex-column mb-5">
 					<li class="nav-item"><a class="nav-link" href="#">Design (2)</a></li>
